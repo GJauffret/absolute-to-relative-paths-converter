@@ -1,6 +1,6 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import * as ts from 'typescript';
+import * as fs from 'fs'
+import * as path from 'path'
+import * as ts from 'typescript'
 
 interface ImportMapping {
   absolutePath: string
@@ -35,7 +35,6 @@ const NODE_BUILT_INS = new Set([
   'querystring',
   'readline',
   'repl',
-  'stream',
   'string_decoder',
   'timers',
   'tls',
@@ -49,7 +48,9 @@ const NODE_BUILT_INS = new Set([
   'worker_threads',
   'zlib',
   'express',
-  'mongodb'
+  'mongodb',
+  'mongodb-memory-server-core',
+  'stream'
 ])
 
 function loadDependencies(): string[] {
@@ -147,7 +148,6 @@ function convertImportPaths(filePath: string, dependencies: string[]): void {
     fs.writeFileSync(filePath, newContent)
   }
 }
-
 function processDirectory(dir: string, dependencies: string[]): void {
   const files = fs.readdirSync(dir)
 
